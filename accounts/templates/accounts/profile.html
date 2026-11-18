@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | LIBRIO</title>
+    <link rel="stylesheet" href="{% static 'accounts/css/style.css' %}">
+</head>
+<body>
+
+    <div class="register-container">
+        <div class="brand">
+            <h1>LIBRIO</h1>
+            <p>Your Books, Your Corner.</p>
+        </div>
+
+        <div class="register-content">
+            <h2>My Profile</h2>
+            <p class="subtitle">View and update your account information.</p>
+
+            <form method="POST">
+                {% csrf_token %}
+
+                {% for field in form %}
+                    <div class="form-group">
+                        {{ field.label_tag }}
+                        {{ field }}
+                        {% for error in field.errors %}
+                            <small class="field-error">{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+
+                {% if form.non_field_errors %}
+                    <div class="error-message">
+                        {{ form.non_field_errors }}
+                    </div>
+                {% endif %}
+
+                <button type="submit">Save Changes</button>
+            </form>
+
+            <p class="login-text">
+                {% if user.role == 'ADMIN' %}
+                    <a href="{% url 'admin_dashboard' %}">Back to Dashboard</a>
+                {% else %}
+                    <a href="{% url 'reader_dashboard' %}">Back to Dashboard</a>
+                {% endif %}
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>

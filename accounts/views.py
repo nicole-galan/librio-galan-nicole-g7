@@ -3,7 +3,7 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
-from .forms import UserRegistrationForm
+from .forms import UserRegistrationForm, UserProfileForm
 from .models import User
 
 
@@ -61,3 +61,17 @@ def user_logout(request):
         logout(request)
 
     return redirect('login')
+
+@login_required
+def user_profile(request):
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, instance=request.user)
+
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+
+    else:
+        form = UserProfileForm(instance=request.user)
+
+    return render(request, 'accounts/profile.html', {'form': form})
