@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Reader Dashboard | LIBRIO</title>
+</head>
+<body>
+    <h1>Welcome to LIBRIO!</h1>
+    <p>This is your Reader Dashboard.</p>
+
+    <form method="POST" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit">Log Out</button>
+    </form>
+</body>
+</html>
