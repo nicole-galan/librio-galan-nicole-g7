@@ -1,5 +1,5 @@
-{% load static %}
 
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +24,48 @@
             <form method="POST">
                 {% csrf_token %}
 
-                {{ form.as_p }}
+                {% if form.non_field_errors %}
+                    <div class="error-message">
+                        {{ form.non_field_errors }}
+                    </div>
+                {% endif %}
+
+                <div class="form-group">
+                    {{ form.username.label_tag }}
+                    {{ form.username }}
+
+                    {% for error in form.username.errors %}
+                        <small class="field-error">{{ error }}</small>
+                    {% endfor %}
+                </div>
+
+                <div class="form-group">
+                    {{ form.email.label_tag }}
+                    {{ form.email }}
+
+                    {% for error in form.email.errors %}
+                        <small class="field-error">{{ error }}</small>
+                    {% endfor %}
+                </div>
+
+                <div class="form-group">
+                    {{ form.password1.label_tag }}
+                    {{ form.password1 }}
+                    <small class="field-hint">Choose a secure password.</small>
+
+                    {% for error in form.password1.errors %}
+                        <small class="field-error">{{ error }}</small>
+                    {% endfor %}
+                </div>
+
+                <div class="form-group">
+                    {{ form.password2.label_tag }}
+                    {{ form.password2 }}
+
+                    {% for error in form.password2.errors %}
+                        <small class="field-error">{{ error }}</small>
+                    {% endfor %}
+                </div>
 
                 <button type="submit">Create Account</button>
             </form>

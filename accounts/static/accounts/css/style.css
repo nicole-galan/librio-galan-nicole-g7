@@ -112,3 +112,54 @@ form button:hover {
     font-weight: bold;
     text-decoration: none;
 }
+
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #E8DCCF;
+    border-radius: 9px;
+    background-color: #FFFCF7;
+    font-size: 14px;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #D9A6B5;
+    box-shadow: 0 0 0 3px rgba(217, 166, 181, 0.15);
+}
+
+.field-hint {
+    display: block;
+    color: #A58B78;
+    font-size: 12px;
+    margin-top: 7px;
+}
+
+.field-error {
+    display: block;
+    color: #C65D5D;
+    font-size: 12px;
+    margin-top: 6px;
+}
+
+.error-message {
+    background-color: #FFF0F0;
+    color: #C65D5D;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 13px;
+    margin-bottom: 18px;
+}
+
