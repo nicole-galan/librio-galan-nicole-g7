@@ -1,3 +1,4 @@
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -5,25 +6,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Account | LIBRIO</title>
+    <link rel="stylesheet" href="{% static 'accounts/css/style.css' %}">
 </head>
 <body>
 
     <div class="register-container">
-        <h1>LIBRIO</h1>
-        <p>Your Books, Your Corner.</p>
 
-        <h2>Create your account</h2>
-        <p>Start organizing your personal book collection.</p>
+        <div class="brand">
+            <h1>LIBRIO</h1>
+            <p>Your Books, Your Corner.</p>
+        </div>
 
-        <form method="POST">
-            {% csrf_token %}
+        <div class="register-content">
+            <h2>Create your account</h2>
+            <p class="subtitle">A little space for all your books and thoughts.</p>
 
-            {{ form.as_p }}
+            <form method="POST">
+                {% csrf_token %}
 
-            <button type="submit">Create Account</button>
-        </form>
+                {{ form.as_p }}
 
-        <p>Already have an account? <a href="#">Log in</a></p>
+                <button type="submit">Create Account</button>
+            </form>
+
+            <p class="login-text">
+                Already have an account? <a href="#">Log in</a>
+            </p>
+        </div>
+
     </div>
 
 </body>
