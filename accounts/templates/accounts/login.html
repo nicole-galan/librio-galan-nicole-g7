@@ -1,0 +1,55 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | LIBRIO</title>
+    <link rel="stylesheet" href="{% static 'accounts/css/style.css' %}">
+</head>
+<body>
+
+    <div class="register-container">
+
+        <div class="brand">
+            <h1>LIBRIO</h1>
+            <p>Your Books, Your Corner.</p>
+        </div>
+
+        <div class="register-content">
+            <h2>Welcome back!</h2>
+            <p class="subtitle">Sign in to return to your little book corner.</p>
+
+            <form method="POST">
+                {% csrf_token %}
+
+                {% if form.non_field_errors %}
+                    <div class="error-message">
+                        {{ form.non_field_errors }}
+                    </div>
+                {% endif %}
+
+                <div class="form-group">
+                    {{ form.username.label_tag }}
+                    {{ form.username }}
+                </div>
+
+                <div class="form-group">
+                    {{ form.password.label_tag }}
+                    {{ form.password }}
+                </div>
+
+                <button type="submit">Log In</button>
+            </form>
+
+            <p class="login-text">
+                Don't have an account?
+                <a href="{% url 'register' %}">Create one</a>
+            </p>
+        </div>
+
+    </div>
+
+</body>
+</html>
