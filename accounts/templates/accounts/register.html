@@ -21,6 +21,12 @@
             <h2>Create your account</h2>
             <p class="subtitle">A little space for all your books and thoughts.</p>
 
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="success-message">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+
             <form method="POST">
                 {% csrf_token %}
 

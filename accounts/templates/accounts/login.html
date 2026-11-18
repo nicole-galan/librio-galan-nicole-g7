@@ -21,6 +21,12 @@
             <h2>Welcome back!</h2>
             <p class="subtitle">Sign in to return to your little book corner.</p>
 
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="success-message">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+            
             <form method="POST">
                 {% csrf_token %}
 

@@ -163,3 +163,11 @@ form button:hover {
     margin-bottom: 18px;
 }
 
+.success-message {
+    color: #477A50;
+    background-color: #EAF5E9;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    text-align: center;
+}

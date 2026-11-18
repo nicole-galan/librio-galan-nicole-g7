@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
 from .forms import UserRegistrationForm, UserProfileForm
 from .models import User
+from django.contrib import messages
 
 
 def register(request):
@@ -13,13 +14,13 @@ def register(request):
 
         if form.is_valid():
             form.save()
+            messages.success(request, 'Your account has been created successfully!')
             return redirect('login')
 
     else:
         form = UserRegistrationForm()
 
     return render(request, 'accounts/register.html', {'form': form})
-
 
 def user_login(request):
     if request.method == 'POST':
